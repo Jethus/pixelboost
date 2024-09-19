@@ -13,70 +13,9 @@
   }
 }
 
-@keyframes type {
-  0% {
-    width: 0;
-    height: auto;
-  }
-  50% {
-    width: 100%;
-  }
-  100% {
-    width: 100%;
-    height: auto;
-    white-space: normal;
-  }
-}
-
-@keyframes mobile-type {
-  0% {
-    width: 0;
-    height: auto;
-  }
-  50% {
-    width: 90cqw;
-  }
-  100% {
-    width: 90cqw;
-    height: auto;
-    white-space: wrap;
-  }
-}
-
-@keyframes preloader-type {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
 @keyframes blink {
   50% {
-    border-color: transparent;
-  }
-}
-
-#preloader {
-  position: fixed;
-  inset: 0;
-  height: 100vh;
-  background-color: v.$dark;
-  z-index: 999;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  transition: transform 2s ease;
-  p {
-    color: #bbb;
-    font-family: Courier, "Open Sans", sans-serif;
-    font-size: 16px;
-    margin: v.$spacing-xsmall 0 0 v.$spacing-xsmall;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid;
-    animation: preloader-type 2s steps(26), blink 0.5s step-end 10 alternate;
+    background-color: transparent;
   }
 }
 
@@ -322,120 +261,44 @@
 // Mobile
 #hero {
   background-color: v.$acc-yellow;
+  padding: 4rem 0;
 
   .container {
     .flex-group-row {
       flex-direction: column;
       .title {
         font-size: v.$fs-xxl;
-        span {
+        flex: 1.5;
+        .typing-text {
           text-decoration: underline;
-          // border-bottom: 5px solid v.$dark;
-          border-right: 3px solid;
+          // border-right: 3px solid;
+          // animation: blink 0.5s step-end infinite alternate;
+          min-width: 200px;
+          max-width: 100%;
+          // line-height: 1em;
+          // min-height: 1em;
+          display: inline-block;
+          white-space: nowrap;
+          // position: relative;
+        }
+        .typing-text::after {
+          content: "";
+          position: absolute;
+          width: 3px;
+          height: 1em;
+          bottom: 0;
+          background-color: #000;
           animation: blink 0.5s step-end infinite alternate;
         }
         @include v.container-query(medium) {
-          font-size: v.$fs-xxxl;
+          font-size: v.$fs-xxxxl;
         }
       }
-
-      .terminal {
-        flex: 0.8;
-        width: 100%;
-        max-width: 100cqw;
-        background-color: v.$dark;
-        border-radius: v.$border-radius-medium;
-        @include v.drop-shadow;
-        @include v.border-style(v.$dark);
-        @include v.container-query(medium) {
-          max-width: 40%;
+      .flex-group-col {
+        gap: 1rem;
+        .flex-group-col {
+          flex-direction: row;
         }
-        .topbar {
-          width: 100%;
-          background-color: #616161;
-          border-radius: v.$border-radius-medium v.$border-radius-medium 0 0;
-          padding: v.$spacing-small;
-          padding-bottom: 0;
-          .task {
-            display: flex;
-            gap: v.$spacing-small;
-            align-items: center;
-            width: 55%;
-            color: v.$light;
-            background-color: v.$dark;
-            border-radius: v.$border-radius-medium v.$border-radius-medium 0 0;
-            padding: v.$spacing-xsmall 0 0 v.$spacing-xsmall;
-            @include v.border-style(v.$dark);
-            @include v.container-query(medium) {
-              width: 45%;
-            }
-            p {
-              font-size: 1rem;
-            }
-          }
-        }
-        .content {
-          padding: 0 v.$spacing-semi-small;
-          margin: v.$spacing-medium 0;
-          border-radius: v.$border-radius-medium;
-          overflow: hidden scroll;
-          height: 400px;
-          scroll-behavior: smooth;
-          p {
-            width: 0;
-            height: 0;
-            color: #bbb;
-            font-family: Courier, "Open Sans", sans-serif;
-            font-size: 14px;
-            margin: v.$spacing-xsmall 0 0 v.$spacing-xsmall;
-            white-space: nowrap;
-            overflow: hidden;
-            animation: mobile-type 2s steps(30) forwards;
-            @include v.container-query(medium) {
-              font-size: 16px;
-              animation: type 2s steps(30) forwards;
-            }
-            .object {
-              color: v.$light;
-            }
-
-            .keyword {
-              color: #98d7e6;
-            }
-
-            .string {
-              color: #f7da6b;
-            }
-
-            .method {
-              color: #b6d883;
-            }
-
-            .variable {
-              color: #a99ecd;
-            }
-
-            .parenthese {
-              color: #e55e51;
-            }
-          }
-          @for $i from 1 through 12 {
-            p:nth-child(#{$i}) {
-              animation-delay: #{$i * 1}s;
-            }
-          }
-          p:nth-child(12) span {
-            border-right: 3px solid;
-            animation: blink 0.5s step-end infinite alternate;
-          }
-        }
-      }
-      .flex-group-row {
-        flex-direction: row;
-      }
-      picture {
-        flex: 0.8;
-        display: none;
       }
 
       @include v.container-query(medium) {

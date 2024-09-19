@@ -13,8 +13,9 @@ $acc-purple: #e2bdff;
 $dark: #000;
 $light: #fff;
 
-$fs-xxxxl: clamp(4rem, 10vw, 8rem); // 64-128px
-$fs-xxxl: clamp(3.75rem, 6vw, 4.5rem); // 60-72px
+$fs-cta: clamp(4rem, 10vw, 8rem); // 64-128px
+$fs-xxxxl: clamp(3.75rem, 7vw, 6rem); // 64-96px
+$fs-xxxl: clamp(3.5rem, 6vw, 4.5rem); // 60-72px
 $fs-xxl: clamp(3rem, 5vw, 3.75rem); // 48-60px
 $fs-xl: clamp(2.5rem, 4vw, 3rem); // 40-48px
 $fs-l: clamp(1.875rem, 3vw, 2.5rem); // 30-40px
