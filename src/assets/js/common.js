@@ -1,9 +1,6 @@
 const header = document.getElementById("header");
 const fadeInElements = document.querySelectorAll(".fade-in");
 const mobileNav = document.getElementById("nav-menu");
-const SCROLL_THRESHOLD = 200;
-let lastScrollY = window.scrollY;
-let ticking = false;
 
 const observerOptions = {
   root: null, // Observe changes in the viewport
@@ -25,28 +22,4 @@ const initializeFadeIn = () => {
   fadeInElements.forEach((element) => observer.observe(element));
 };
 
-const handleScroll = () => {
-  const currentScrollY = window.scrollY;
-  const scrollDelta = currentScrollY - lastScrollY;
-
-  if (Math.abs(scrollDelta) > SCROLL_THRESHOLD) {
-    if (scrollDelta > 0) {
-      header.classList.add("scrolledDown");
-    } else {
-      header.classList.remove("scrolledDown");
-    }
-
-    lastScrollY = currentScrollY;
-  }
-
-  ticking = false;
-};
-
-window.addEventListener("scroll", () => {
-  if (!ticking) {
-    window.requestAnimationFrame(handleScroll);
-    ticking = true;
-  }
-});
-
-initializeFadeIn();
+document.addEventListener("DOMContentLoaded", initializeFadeIn);

@@ -2,7 +2,59 @@ const accordionContainer = document.querySelector(".accordion");
 const accordionButtons = document.querySelectorAll(".accordion button");
 const tabContainer = document.querySelector(".tab-container");
 const tabContents = document.querySelectorAll(".tab-content");
-const terminalContent = document.querySelector(".terminal .content");
+const typingElement = document.querySelector(".typing-text");
+
+// typing text
+
+let textLength = 0;
+let currentText = "";
+const words = [
+  "web design",
+  "development",
+  "marketing",
+  "branding",
+  "communication",
+];
+let currentWordIndex = 0;
+
+document.addEventListener("DOMContentLoaded", () => {
+  startTyping();
+});
+
+const startTyping = () => {
+  currentText = words[currentWordIndex];
+  currentWordIndex = (currentWordIndex + 1) % words.length;
+  textLength = 0;
+  typingElement.innerHTML = "";
+  type();
+};
+
+const type = () => {
+  typingElement.innerHTML = currentText.slice(0, textLength++);
+  if (textLength < currentText.length + 1) {
+    setTimeout(type, 60);
+  } else {
+    setTimeout(startErasing, 2000);
+  }
+};
+
+const startErasing = () => {
+  textLength = currentText.length;
+  if (textLength > 0) {
+    erase();
+  } else {
+    setTimeout(startTyping, 2000);
+  }
+};
+
+const erase = () => {
+  typingElement.innerHTML = currentText.slice(0, textLength--);
+  if (textLength >= 0) {
+    setTimeout(erase, 60);
+  } else {
+    setTimeout(startTyping, 2000);
+  }
+};
 
 // sliding accordion
 accordionContainer.addEventListener("click", (e) => {
@@ -46,15 +98,5 @@ tabContainer.addEventListener("click", (e) => {
         tabContent.classList.add("active");
       }
     });
-  }
-});
-
-const scrollToBottom = (element) => {
-  element.scrollTop = element.scrollHeight;
-};
-
-terminalContent.addEventListener("animationend", (e) => {
-  if (e.target.tagName === "P") {
-    scrollToBottom(terminalContent);
   }
 });
