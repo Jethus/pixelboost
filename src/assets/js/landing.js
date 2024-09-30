@@ -4,15 +4,13 @@ const tabContainer = document.querySelector(".tab-container");
 const tabContents = document.querySelectorAll(".tab-content");
 const typingElement = document.querySelector(".typing-text");
 
-// typing text
-
 let textLength = 0;
 let currentText = "";
 const words = [
   "web design",
-  "development",
-  "marketing",
+  "accessibility",
   "branding",
+  "development",
   "communication",
 ];
 let currentWordIndex = 0;
@@ -34,7 +32,7 @@ const type = () => {
   if (textLength < currentText.length + 1) {
     setTimeout(type, 60);
   } else {
-    setTimeout(startErasing, 2000);
+    setTimeout(startErasing, 1500);
   }
 };
 
@@ -43,7 +41,7 @@ const startErasing = () => {
   if (textLength > 0) {
     erase();
   } else {
-    setTimeout(startTyping, 2000);
+    setTimeout(startTyping, 500);
   }
 };
 
@@ -52,7 +50,7 @@ const erase = () => {
   if (textLength >= 0) {
     setTimeout(erase, 60);
   } else {
-    setTimeout(startTyping, 2000);
+    setTimeout(startTyping, 500);
   }
 };
 
