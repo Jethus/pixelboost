@@ -1,0 +1,11 @@
+@use "../../styles/index" as *;
+
+#contact {
+  background-color: $acc-yellow;
+  .flex-group-col {
+    align-items: flex-start;
+    .flex-text {
+      align-items: flex-start;
+    }
+  }
+}

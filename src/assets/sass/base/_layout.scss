@@ -1,0 +1,52 @@
+@use "../styles/index" as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+html {
+  @include body-style;
+  margin: 0;
+  padding: 0;
+  color: $dark;
+  overflow-x: clip;
+}
+
+main {
+  background-color: $dark;
+  flex-grow: 1;
+}
+
+body:has(#menu-toggle:checked) {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+/* Remove tap highlight color on mobile */
+a,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  max-width: $content-width;
+  container-type: inline-size;
+  position: relative;
+  z-index: 1;
+  width: 92%;
+  margin: auto;
+  @include flex-group-row;
+}
+
+section {
+  border: 1px solid $dark;
+  padding: 1.5rem 0.75rem;
+  @include container-query(medium) {
+    padding: 2rem 1rem;
+  }
+}

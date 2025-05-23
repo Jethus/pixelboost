@@ -1,0 +1,18 @@
+@use "../../styles/index" as *;
+
+#web-design {
+  background-color: $acc-pink;
+}
+
+#web-dev {
+  background-color: $acc-purple;
+  @include container-query(medium) {
+    .flex-group-row {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+#branding {
+  background-color: $acc-yellow;
+}

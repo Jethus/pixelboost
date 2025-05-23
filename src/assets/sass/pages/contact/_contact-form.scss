@@ -1,0 +1,48 @@
+@use "../../styles/index" as *;
+
+#contact-form {
+  @include flex-group-col;
+  @include border-style($dark);
+  @include drop-shadow;
+  background-color: $light;
+  width: 100%;
+  align-items: flex-start;
+  border-radius: 1rem;
+  padding: 2rem;
+  .grid-group {
+    .flex-group-col {
+      gap: 0.5rem;
+    }
+    width: 100%;
+    grid-template-columns: 1fr;
+    @include container-query(small) {
+      grid-template-columns: 1fr 1fr;
+    }
+    :last-child {
+      grid-column: 1 / -1;
+    }
+    label {
+      span {
+        color: #e00;
+        margin-bottom: 0.5rem;
+      }
+    }
+    input,
+    textarea {
+      width: 100%;
+      @include border-style($dark);
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      &[type="text"] {
+        font-size: 1rem;
+        @include body-style;
+      }
+    }
+    textarea {
+      height: 12rem;
+      resize: vertical;
+      min-height: 6rem;
+      max-height: 20rem;
+    }
+  }
+}

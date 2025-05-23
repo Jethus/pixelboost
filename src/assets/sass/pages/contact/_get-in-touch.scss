@@ -1,0 +1,13 @@
+@use "../../styles/index" as *;
+
+#get-in-touch {
+  background-color: $acc-cream;
+
+  .flex-group-col {
+    align-items: flex-start;
+
+    .flex-text {
+      align-items: flex-start;
+    }
+  }
+}

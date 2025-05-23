@@ -1,6 +1,25 @@
-@forward "vars.scss";
-@forward "base.scss";
-@use "landing.scss";
-@use "contact.scss";
-@use "about.scss";
-@use "services.scss";
+@use "base/accessibility";
+@use "base/layout";
+@use "base/media";
+@use "base/reset";
+@use "base/utilities";
+
+@use "pages/about/about";
+@use "pages/about/capabilities";
+@use "pages/about/choose-us";
+
+@use "pages/contact/contact-form";
+@use "pages/contact/contact";
+@use "pages/contact/get-in-touch";
+
+@use "pages/landing/hero";
+@use "pages/landing/portfolio";
+@use "pages/landing/pricing";
+@use "pages/landing/what-we-do";
+
+@use "pages/services/services";
+@use "pages/services/web-design";
+
+@use "pages/shared/cta";
+@use "pages/shared/footer";
+@use "pages/shared/header";

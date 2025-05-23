@@ -1,0 +1,89 @@
+@use "../../styles/index" as *;
+
+#pricing {
+  background-color: $acc-pink;
+
+  .container {
+    flex-direction: column;
+
+    .flex-group-col {
+      max-width: clamp(40rem, 32vw, 48rem);
+      align-self: flex-start;
+      align-items: flex-start;
+
+      .flex-text {
+        align-items: flex-start;
+      }
+
+      .title {
+        @include fluid-type(8);
+      }
+    }
+
+    .accordion {
+      width: 100%;
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      flex-direction: column;
+
+      li {
+        border-radius: 0.5rem;
+        @include border-style($dark);
+        overflow: hidden;
+        transition: $transition-default;
+        &:has(button.active),
+        &:has(button:hover) {
+          @include drop-shadow;
+        }
+        &:has(button:focus-visible) {
+          @include focus-style(#04d9ff);
+        }
+      }
+
+      button {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        padding: 1rem 0.5rem;
+        border-radius: 0.25rem;
+        text-align: left;
+        @include transition-slow(background-color);
+
+        &.active {
+          border-bottom: $border-dark;
+          background-color: lighten($acc-pink, 10%);
+        }
+        &:hover {
+          background-color: lighten($acc-pink, 20%);
+        }
+
+        &.active svg {
+          transform: rotate(225deg);
+        }
+      }
+
+      svg {
+        margin-right: 0.5rem;
+        min-width: 48px;
+        @include transition-slow(transform);
+        will-change: transform;
+      }
+
+      p {
+        max-height: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0 1rem;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+
+        &.expanded {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+}

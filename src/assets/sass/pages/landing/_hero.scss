@@ -1,0 +1,50 @@
+@use "../../styles/index" as *;
+
+#hero {
+  background-color: $acc-yellow;
+  padding: 4rem 0;
+
+  .container {
+    .flex-group-row {
+      flex-direction: column;
+      .title {
+        @include fluid-type(6);
+        flex: 1.5;
+        .typing-text {
+          text-decoration: underline;
+          // border-right: 3px solid;
+          // animation: blink 0.5s step-end infinite alternate;
+          min-width: 200px;
+          max-width: 100%;
+          // line-height: 1em;
+          // min-height: 1em;
+          display: inline-block;
+          white-space: nowrap;
+          // position: relative;
+        }
+        .typing-text::after {
+          content: "";
+          position: absolute;
+          width: 3px;
+          height: 1em;
+          bottom: 0;
+          background-color: #000;
+          animation: blink 0.5s step-end infinite alternate;
+        }
+        @include container-query(medium) {
+          @include fluid-type(8);
+        }
+      }
+      .flex-group-col {
+        gap: 1rem;
+        .flex-group-col {
+          flex-direction: row;
+        }
+      }
+
+      @include container-query(medium) {
+        flex-direction: row;
+      }
+    }
+  }
+}

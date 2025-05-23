@@ -1,0 +1,32 @@
+@use "../../styles/index" as *;
+
+#capabilities {
+  background-color: $acc-purple;
+  .flex-group-col {
+    align-items: flex-start;
+    .topper,
+    .title {
+      align-self: flex-start;
+    }
+    .flex-group-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      @include container-query(medium) {
+        gap: 2rem;
+      }
+      & > * {
+        @include btn-line;
+        @include fluid-type(4);
+        @include transition-fast(transform);
+        @include container-query(medium) {
+          @include fluid-type(5);
+        }
+        &:hover {
+          cursor: default;
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
