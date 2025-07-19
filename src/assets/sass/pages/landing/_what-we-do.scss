@@ -1,4 +1,4 @@
-@use "../../styles/index" as *;
+@use "../../foundation/index" as *;
 
 #what-we-do {
   background-color: $acc-lightblue;
@@ -42,7 +42,7 @@
         background-color: lighten($brand-secondary, 20%);
         @include border-style($dark);
         border-bottom: none;
-        transition: $transition-default;
+        @include transition-fast(background-color);
         &:hover {
           background-color: lighten($brand-secondary, 10%);
         }
@@ -53,17 +53,16 @@
           background-color: $brand-secondary;
         }
         @include container-query(small) {
-          padding: $spacing-small 1rem;
+          padding: 0.5rem 1rem;
         }
       }
     }
 
     .tab-content {
       display: block;
-      padding: $spacing-semi-large;
+      padding: 1.5rem;
       border-radius: 1rem;
       @include border-style($dark);
-      transition: $transition-default;
       background-color: #fff;
       @include drop-shadow;
       @include container-query(medium) {

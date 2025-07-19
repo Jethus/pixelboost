@@ -1,4 +1,4 @@
-@use "../../styles/index" as *;
+@use "../../foundation/index" as *;
 
 #hero {
   background-color: $acc-yellow;
@@ -8,7 +8,7 @@
     .flex-group-row {
       flex-direction: column;
       .title {
-        @include fluid-type(6);
+        font-size: var(--font-size-xxxl);
         flex: 1.5;
         .typing-text {
           text-decoration: underline;
@@ -32,7 +32,7 @@
           animation: blink 0.5s step-end infinite alternate;
         }
         @include container-query(medium) {
-          @include fluid-type(8);
+          font-size: clamped(72px, 96px);
         }
       }
       .flex-group-col {

@@ -1,0 +1,91 @@
+@use "./foundation/vars" as *;
+
+@mixin fade-in() {
+  opacity: 0;
+  transform: translateY(2rem);
+  &.visible {
+    animation: fade-in 1s ease forwards;
+  }
+}
+
+// Flexbox
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-group-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@mixin flex-group-col {
+  @include flex-group-row;
+  flex-direction: column;
+}
+
+// Grid
+@mixin grid-group {
+  display: grid;
+  gap: 1rem;
+}
+
+// btn styles
+@mixin drop-shadow {
+  box-shadow: 0.25rem 0.25rem 0 0 $dark;
+}
+
+@mixin btn-press-effect($colour) {
+  transform: scale(0.95);
+  background-color: darken($colour, 5%);
+}
+
+@mixin btn-base {
+  @include header-style;
+  @include border-style($dark);
+  @include fluid-type(2);
+  @include transition-fast(transform, background-color);
+  font-weight: $bold-weight;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    @include drop-shadow;
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    @include focus-style($dark);
+  }
+}
+
+@mixin btn-solid {
+  @include btn-base;
+  color: $light;
+  background-color: $dark;
+
+  &:active {
+    @include btn-press-effect($dark);
+  }
+
+  &:hover {
+    @include border-style($light);
+  }
+}
+
+@mixin btn-line {
+  @include btn-base;
+  color: $dark;
+  background-color: transparent;
+
+  &:active {
+    @include btn-press-effect(transparent);
+  }
+
+  &:hover {
+    @include border-style($dark);
+  }
+}

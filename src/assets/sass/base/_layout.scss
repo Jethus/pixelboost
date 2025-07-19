@@ -1,4 +1,8 @@
-@use "../styles/index" as *;
+@use "../foundation/index" as *;
+:root {
+  @include fluid-font-sizes;
+  --custom-thing: 50px;
+}
 
 html {
   scroll-behavior: smooth;

@@ -1,4 +1,4 @@
-@use "../../styles/index" as *;
+@use "../../foundation/index" as *;
 
 #services {
   background-color: $acc-lightblue;
@@ -14,7 +14,7 @@
   .flex-group-row {
     align-items: flex-start;
     .flex-group-col {
-      gap: $spacing-small;
+      gap: 0.5rem;
       align-items: flex-start;
       flex: 2;
       .flex-text {

@@ -1,4 +1,4 @@
-@use "../../styles/index" as *;
+@use "../../foundation/index" as *;
 
 #pricing {
   background-color: $acc-pink;
@@ -31,7 +31,7 @@
         border-radius: 0.5rem;
         @include border-style($dark);
         overflow: hidden;
-        transition: $transition-default;
+        @include transition-fast(box-shadow);
         &:has(button.active),
         &:has(button:hover) {
           @include drop-shadow;

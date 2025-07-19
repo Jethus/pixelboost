@@ -1,0 +1,48 @@
+@use "sass:math";
+@use "sass:map";
+
+// Define a map of breakpoints
+$breakpoints: (
+  small-mobile: 320px,
+  large-mobile: 480px,
+  tablets: 768px,
+  small-laptop: 1024px,
+  large-laptop: 1280px,
+  desktop: 1536px,
+);
+
+@function to-rems($px) {
+  $rems: math.div($px, 16px) * 1rem;
+  @return $rems;
+}
+
+@function rnd($number, $places: 0) {
+  $n: 1;
+  @if $places > 0 {
+    @for $i from 1 through $places {
+      $n: $n * 10;
+    }
+  }
+  @return math.div(math.round($number * $n), $n);
+}
+
+$default-min-bp: map.get($breakpoints, "small-mobile");
+$default-max-bp: map.get($breakpoints, "desktop");
+
+@function clamped(
+  $min-px,
+  $max-px,
+  $min-bp: $default-min-bp,
+  $max-bp: $default-max-bp
+) {
+  $slope: math.div($max-px - $min-px, $max-bp - $min-bp);
+  $slope-vw: rnd($slope * 100, 2);
+  $intercept-rems: rnd(to-rems($min-px - $slope * $min-bp), 2);
+  $min-rems: rnd(to-rems($min-px), 2);
+  $max-rems: rnd(to-rems($max-px), 2);
+  @return clamp(
+    #{$min-rems},
+    #{$slope-vw}vw + #{$intercept-rems},
+    #{$max-rems}
+  );
+}
