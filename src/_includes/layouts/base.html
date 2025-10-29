@@ -115,6 +115,24 @@
     </title>
   </head>
   <body>
+    <!-- Swetrix -->
+    <script src="https://swetrix.org/swetrix.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        swetrix.init("wvkNP4fThwrg", {
+          apiURL: "https://api.pixelboost.dev/log",
+        });
+        swetrix.trackViews();
+      });
+    </script>
+
+    <noscript>
+      <img
+        src="https://api.pixelboost.dev/log/noscript?pid=wvkNP4fThwrg"
+        alt=""
+        referrerpolicy="no-referrer-when-downgrade"
+      />
+    </noscript>
     <!--Screen reader skip main nav-->
     <a class="skip" aria-label="skip to main content" href="#main"
       >Click To Skip To Main Content</a
